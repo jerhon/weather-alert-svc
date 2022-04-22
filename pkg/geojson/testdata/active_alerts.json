@@ -1,0 +1,608 @@
+{
+  "@context": [
+    "https://geojson.org/geojson-ld/geojson-context.jsonld",
+    {
+      "@version": "1.1",
+      "wx": "https://api.weather.gov/ontology#",
+      "@vocab": "https://api.weather.gov/ontology#"
+    }
+  ],
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7850756e570340e548a89aa3422348ba727eda3e.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -86.579999999999998,
+              36.259999999999998
+            ],
+            [
+              -86.590000000000003,
+              36.239999999999995
+            ],
+            [
+              -86.549999999999997,
+              36.139999999999993
+            ],
+            [
+              -86.590000000000003,
+              36.019999999999996
+            ],
+            [
+              -86.609999999999999,
+              36.009999999999998
+            ],
+            [
+              -86.609999999999999,
+              35.979999899999996
+            ],
+            [
+              -86.620000000000005,
+              35.969999999999999
+            ],
+            [
+              -86.620000000000005,
+              35.939999999999998
+            ],
+            [
+              -86.670000000000002,
+              35.769999999999996
+            ],
+            [
+              -86.680000000000007,
+              35.749999999999993
+            ],
+            [
+              -86.700000000000003,
+              35.749999999999993
+            ],
+            [
+              -86.700000000000003,
+              35.719999999999992
+            ],
+            [
+              -86.689999999999998,
+              35.709999999999994
+            ],
+            [
+              -86.739999999999995,
+              35.699999999999996
+            ],
+            [
+              -86.759999999999991,
+              35.709999999999994
+            ],
+            [
+              -87.379999999999995,
+              35.709999999999994
+            ],
+            [
+              -87.339999999999989,
+              35.969999999999992
+            ],
+            [
+              -87.379999999999995,
+              36.249999999999993
+            ],
+            [
+              -86.599999999999994,
+              36.359999999999992
+            ],
+            [
+              -86.579999999999998,
+              36.259999999999998
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.7850756e570340e548a89aa3422348ba727eda3e.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.7850756e570340e548a89aa3422348ba727eda3e.001.1",
+        "areaDesc": "Cheatham, TN; Davidson, TN; Dickson, TN; Hickman, TN; Maury, TN; Sumner, TN; Williamson, TN",
+        "geocode": {
+          "SAME": [
+            "047021",
+            "047037",
+            "047043",
+            "047081",
+            "047119",
+            "047165",
+            "047187"
+          ],
+          "UGC": [
+            "TNC021",
+            "TNC037",
+            "TNC043",
+            "TNC081",
+            "TNC119",
+            "TNC165",
+            "TNC187"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/TNC021",
+          "https://api.weather.gov/zones/county/TNC037",
+          "https://api.weather.gov/zones/county/TNC043",
+          "https://api.weather.gov/zones/county/TNC081",
+          "https://api.weather.gov/zones/county/TNC119",
+          "https://api.weather.gov/zones/county/TNC165",
+          "https://api.weather.gov/zones/county/TNC187"
+        ],
+        "references": [],
+        "sent": "2022-04-13T19:16:00-05:00",
+        "effective": "2022-04-13T19:16:00-05:00",
+        "onset": "2022-04-13T19:16:00-05:00",
+        "expires": "2022-04-13T20:00:00-05:00",
+        "ends": "2022-04-13T20:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Alert",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Nashville TN",
+        "headline": "Severe Thunderstorm Warning issued April 13 at 7:16PM CDT until April 13 at 8:00PM CDT by NWS Nashville TN",
+        "description": "The National Weather Service in Nashville has issued a\n\n* Severe Thunderstorm Warning for...\nDavidson County in Middle Tennessee...\nEastern Dickson County in Middle Tennessee...\nNorthern Maury County in Middle Tennessee...\nSouthwestern Sumner County in Middle Tennessee...\nWilliamson County in Middle Tennessee...\nSoutheastern Cheatham County in Middle Tennessee...\nNortheastern Hickman County in Middle Tennessee...\n\n* Until 800 PM CDT.\n\n* At 716 PM CDT, severe thunderstorms were located along a line\nextending from 7 miles north of Dickson to near Burns to\nCenterville, moving east at 65 mph.\n\nHAZARD...70 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect considerable tree damage. Damage is likely to\nmobile homes, roofs, and outbuildings.\n\n* Locations impacted include...\nFranklin, Columbia, Dickson, Ashland City, Nashville, Madison,\nHendersonville, Brentwood, La Vergne, Spring Hill, Goodlettsville,\nNolensville, Forest Hills, Oak Hill, White Bluff, Belle Meade,\nKingston Springs, Lakewood, Thompson's Station and Pegram.\n\nThis includes the following highways...\nInterstate 40 between mile markers 172 and 223.\nInterstate 65 between mile markers 51 and 98.\nInterstate 24 between mile markers 36 and 63.\nInterstate 840 between mile markers 1 and 42.",
+        "instruction": "A Tornado Watch remains in effect until 1000 PM CDT for Middle\nTennessee.\n\nFor your protection move to an interior room on the lowest floor of a\nbuilding.\n\nA Tornado Watch remains in effect until 1000 PM CDT for Middle\nTennessee.",
+        "response": "Shelter",
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVROHX"
+          ],
+          "WMOidentifier": [
+            "WUUS54 KOHX 140016"
+          ],
+          "eventMotionDescription": [
+            "2022-04-14T00:16:00-00:00...storm...258DEG...58KT...36.17,-87.41 36.02,-87.33 35.79,-87.44"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "70 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "Up to .75"
+          ],
+          "thunderstormDamageThreat": [
+            "CONSIDERABLE"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.NEW.KOHX.SV.W.0046.220414T0016Z-220414T0100Z/"
+          ],
+          "eventEndingTime": [
+            "2022-04-14T01:00:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0cea4512edd1c2a83d35e5d0fad26c9b0611f659.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -90.719999999999999,
+              32.119999999999997
+            ],
+            [
+              -90.719999999999999,
+              32.049999999999997
+            ],
+            [
+              -90.409999999999997,
+              32.039999999999999
+            ],
+            [
+              -90.420000000000002,
+              31.739999999999998
+            ],
+            [
+              -90.840000000000003,
+              31.75
+            ],
+            [
+              -90.840000000000003,
+              32.100000000000001
+            ],
+            [
+              -90.719999999999999,
+              32.119999999999997
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.0cea4512edd1c2a83d35e5d0fad26c9b0611f659.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.0cea4512edd1c2a83d35e5d0fad26c9b0611f659.001.1",
+        "areaDesc": "Claiborne, MS; Copiah, MS; Jefferson, MS",
+        "geocode": {
+          "SAME": [
+            "028021",
+            "028029",
+            "028063"
+          ],
+          "UGC": [
+            "MSC021",
+            "MSC029",
+            "MSC063"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MSC021",
+          "https://api.weather.gov/zones/county/MSC029",
+          "https://api.weather.gov/zones/county/MSC063"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.18a3e65854a6dd26158ffbdee16c3da1cd1193f6.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.18a3e65854a6dd26158ffbdee16c3da1cd1193f6.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2022-04-13T18:35:00-05:00"
+          },
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.947115eb440949f6bf198eb218ca4ef8c339fd28.002.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.947115eb440949f6bf198eb218ca4ef8c339fd28.002.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2022-04-13T18:54:00-05:00"
+          }
+        ],
+        "sent": "2022-04-13T19:14:00-05:00",
+        "effective": "2022-04-13T19:14:00-05:00",
+        "onset": "2022-04-13T19:14:00-05:00",
+        "expires": "2022-04-13T19:30:00-05:00",
+        "ends": "2022-04-13T19:30:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Extreme",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Tornado Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Jackson MS",
+        "headline": "Tornado Warning issued April 13 at 7:14PM CDT until April 13 at 7:30PM CDT by NWS Jackson MS",
+        "description": "At 713 PM CDT, a severe thunderstorm capable of producing a tornado\nwas located near Carpenter, or 19 miles west of Hazlehurst, moving\neast at 55 mph.\n\nHAZARD...Tornado.\n\nSOURCE...Radar indicated rotation.\n\nIMPACT...Flying debris will be dangerous to those caught without\nshelter. Mobile homes will be damaged or destroyed. Damage\nto roofs, windows, and vehicles will occur.  Tree damage is\nlikely.\n\nThis dangerous storm will be near...\nDentville around 725 PM CDT.",
+        "instruction": "TAKE COVER NOW! Move to a basement or an interior room on the lowest\nfloor of a sturdy building. Avoid windows. If you are outdoors, in a\nmobile home, or in a vehicle, move to the closest substantial shelter\nand protect yourself from flying debris.",
+        "response": "Shelter",
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSJAN"
+          ],
+          "WMOidentifier": [
+            "WWUS54 KJAN 140014"
+          ],
+          "NWSheadline": [
+            "A TORNADO WARNING REMAINS IN EFFECT UNTIL 730 PM CDT FOR SOUTHEASTERN CLAIBORNE...EASTERN JEFFERSON AND WESTERN COPIAH COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2022-04-14T00:13:00-00:00...storm...262DEG...48KT...31.97,-90.7"
+          ],
+          "maxHailSize": [
+            "Up to .75"
+          ],
+          "tornadoDetection": [
+            "RADAR INDICATED"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KJAN.TO.W.0064.000000T0000Z-220414T0030Z/"
+          ],
+          "eventEndingTime": [
+            "2022-04-14T00:30:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9a85113dba27473757f7cf6616a64b88192fd8d7.002.1",
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.9a85113dba27473757f7cf6616a64b88192fd8d7.002.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.9a85113dba27473757f7cf6616a64b88192fd8d7.002.1",
+        "areaDesc": "Bedford, TN; Cheatham, TN; Clay, TN; Davidson, TN; Dickson, TN; Giles, TN; Hickman, TN; Humphreys, TN; Jackson, TN; Lawrence, TN; Lewis, TN; Macon, TN; Marshall, TN; Maury, TN; Perry, TN; Robertson, TN; Rutherford, TN; Smith, TN; Sumner, TN; Trousdale, TN; Wayne, TN; Williamson, TN; Wilson, TN",
+        "geocode": {
+          "SAME": [
+            "047003",
+            "047021",
+            "047027",
+            "047037",
+            "047043",
+            "047055",
+            "047081",
+            "047085",
+            "047087",
+            "047099",
+            "047101",
+            "047111",
+            "047117",
+            "047119",
+            "047135",
+            "047147",
+            "047149",
+            "047159",
+            "047165",
+            "047169",
+            "047181",
+            "047187",
+            "047189"
+          ],
+          "UGC": [
+            "TNC003",
+            "TNC021",
+            "TNC027",
+            "TNC037",
+            "TNC043",
+            "TNC055",
+            "TNC081",
+            "TNC085",
+            "TNC087",
+            "TNC099",
+            "TNC101",
+            "TNC111",
+            "TNC117",
+            "TNC119",
+            "TNC135",
+            "TNC147",
+            "TNC149",
+            "TNC159",
+            "TNC165",
+            "TNC169",
+            "TNC181",
+            "TNC187",
+            "TNC189"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/TNC003",
+          "https://api.weather.gov/zones/county/TNC021",
+          "https://api.weather.gov/zones/county/TNC027",
+          "https://api.weather.gov/zones/county/TNC037",
+          "https://api.weather.gov/zones/county/TNC043",
+          "https://api.weather.gov/zones/county/TNC055",
+          "https://api.weather.gov/zones/county/TNC081",
+          "https://api.weather.gov/zones/county/TNC085",
+          "https://api.weather.gov/zones/county/TNC087",
+          "https://api.weather.gov/zones/county/TNC099",
+          "https://api.weather.gov/zones/county/TNC101",
+          "https://api.weather.gov/zones/county/TNC111",
+          "https://api.weather.gov/zones/county/TNC117",
+          "https://api.weather.gov/zones/county/TNC119",
+          "https://api.weather.gov/zones/county/TNC135",
+          "https://api.weather.gov/zones/county/TNC147",
+          "https://api.weather.gov/zones/county/TNC149",
+          "https://api.weather.gov/zones/county/TNC159",
+          "https://api.weather.gov/zones/county/TNC165",
+          "https://api.weather.gov/zones/county/TNC169",
+          "https://api.weather.gov/zones/county/TNC181",
+          "https://api.weather.gov/zones/county/TNC187",
+          "https://api.weather.gov/zones/county/TNC189"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.b143ad1517f54fccfafe46a6839cdfab78e220d3.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.b143ad1517f54fccfafe46a6839cdfab78e220d3.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2022-04-13T17:01:00-05:00"
+          }
+        ],
+        "sent": "2022-04-13T19:14:00-05:00",
+        "effective": "2022-04-13T19:14:00-05:00",
+        "onset": "2022-04-13T19:14:00-05:00",
+        "expires": "2022-04-13T22:00:00-05:00",
+        "ends": "2022-04-13T22:00:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Extreme",
+        "certainty": "Possible",
+        "urgency": "Future",
+        "event": "Tornado Watch",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Nashville TN",
+        "headline": "Tornado Watch issued April 13 at 7:14PM CDT until April 13 at 10:00PM CDT by NWS Nashville TN",
+        "description": "TORNADO WATCH 125 REMAINS VALID UNTIL 10 PM CDT THIS EVENING FOR\nTHE FOLLOWING AREAS\n\nIN TENNESSEE THIS WATCH INCLUDES 23 COUNTIES\n\nIN MIDDLE TENNESSEE\n\nBEDFORD               CHEATHAM              CLAY\nDAVIDSON              DICKSON               GILES\nHICKMAN               HUMPHREYS             JACKSON\nLAWRENCE              LEWIS                 MACON\nMARSHALL              MAURY                 PERRY\nROBERTSON             RUTHERFORD            SMITH\nSUMNER                TROUSDALE             WAYNE\nWILLIAMSON            WILSON\n\nTHIS INCLUDES THE CITIES OF ASHLAND CITY, BRENTWOOD, CARTHAGE,\nCELINA, CENTERVILLE, CLIFTON, COLLINWOOD, COLUMBIA, DICKSON,\nFRANKLIN, GAINESBORO, GALLATIN, GOODLETTSVILLE, GORDONSVILLE,\nHARTSVILLE, HENDERSONVILLE, HOHENWALD, KINGSTON SPRINGS,\nLA VERGNE, LAFAYETTE, LAWRENCEBURG, LEBANON, LEWISBURG, LINDEN,\nLOBELVILLE, MCEWEN, MOUNT JULIET, MURFREESBORO, NASHVILLE,\nNEW JOHNSONVILLE, PEGRAM, PULASKI, SHELBYVILLE, SMYRNA,\nSOUTH CARTHAGE, SPRINGFIELD, WAVERLY, AND WAYNESBORO.",
+        "instruction": null,
+        "response": "Monitor",
+        "parameters": {
+          "AWIPSidentifier": [
+            "WCNOHX"
+          ],
+          "WMOidentifier": [
+            "WWUS64 KOHX 140014"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KOHX.TO.A.0125.000000T0000Z-220414T0300Z/"
+          ],
+          "eventEndingTime": [
+            "2022-04-14T03:00:00+00:00"
+          ]
+        }
+      }
+    },
+    {
+      "id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c75eb0f52331e42e931966f9ac2c59d407ec7cd5.001.1",
+      "type": "Feature",
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -89.769999999999996,
+              33.869999999999997
+            ],
+            [
+              -89.769999999999996,
+              33.899999999999999
+            ],
+            [
+              -89.819999899999999,
+              33.899999999999999
+            ],
+            [
+              -89.75,
+              34.149999999999999
+            ],
+            [
+              -88.9599999,
+              34.259999999999998
+            ],
+            [
+              -89,
+              33.879999999999995
+            ],
+            [
+              -89.260000000000005,
+              33.719999999999999
+            ],
+            [
+              -89.510000000000005,
+              33.719999999999999
+            ],
+            [
+              -89.510000000000005,
+              33.869999999999997
+            ],
+            [
+              -89.769999999999996,
+              33.869999999999997
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.c75eb0f52331e42e931966f9ac2c59d407ec7cd5.001.1",
+        "@type": "wx:Alert",
+        "id": "urn:oid:2.49.0.1.840.0.c75eb0f52331e42e931966f9ac2c59d407ec7cd5.001.1",
+        "areaDesc": "Calhoun, MS; Chickasaw, MS; Lafayette, MS; Pontotoc, MS; Yalobusha, MS",
+        "geocode": {
+          "SAME": [
+            "028013",
+            "028017",
+            "028071",
+            "028115",
+            "028161"
+          ],
+          "UGC": [
+            "MSC013",
+            "MSC017",
+            "MSC071",
+            "MSC115",
+            "MSC161"
+          ]
+        },
+        "affectedZones": [
+          "https://api.weather.gov/zones/county/MSC013",
+          "https://api.weather.gov/zones/county/MSC017",
+          "https://api.weather.gov/zones/county/MSC071",
+          "https://api.weather.gov/zones/county/MSC115",
+          "https://api.weather.gov/zones/county/MSC161"
+        ],
+        "references": [
+          {
+            "@id": "https://api.weather.gov/alerts/urn:oid:2.49.0.1.840.0.325b8d41e1d5b4cb0167f9faf2cdc71f28b2ac65.001.1",
+            "identifier": "urn:oid:2.49.0.1.840.0.325b8d41e1d5b4cb0167f9faf2cdc71f28b2ac65.001.1",
+            "sender": "w-nws.webmaster@noaa.gov",
+            "sent": "2022-04-13T18:52:00-05:00"
+          }
+        ],
+        "sent": "2022-04-13T19:14:00-05:00",
+        "effective": "2022-04-13T19:14:00-05:00",
+        "onset": "2022-04-13T19:14:00-05:00",
+        "expires": "2022-04-13T19:45:00-05:00",
+        "ends": "2022-04-13T19:45:00-05:00",
+        "status": "Actual",
+        "messageType": "Update",
+        "category": "Met",
+        "severity": "Severe",
+        "certainty": "Observed",
+        "urgency": "Immediate",
+        "event": "Severe Thunderstorm Warning",
+        "sender": "w-nws.webmaster@noaa.gov",
+        "senderName": "NWS Memphis TN",
+        "headline": "Severe Thunderstorm Warning issued April 13 at 7:14PM CDT until April 13 at 7:45PM CDT by NWS Memphis TN",
+        "description": "RRA\n\nAt 714 PM CDT, severe thunderstorms were located along a line\nextending from near Tula to 8 miles west of Bruce to near Grenada,\nmoving east at 50 mph.\n\nHAZARD...60 mph wind gusts.\n\nSOURCE...Radar indicated.\n\nIMPACT...Expect damage to roofs, siding, and trees.\n\nLocations impacted include...\nPontotoc, Houston, Water Valley, Bruce, Calhoun City, Vardaman,\nDerma, Coffeeville, Pittsboro, Slate Springs, Sabougla, Pyland,\nRandolph, Banner, Velma, Houlka, Paris, New Houlka, Algoma and Big\nCreek.",
+        "instruction": "A Tornado Watch remains in effect until 900 PM CDT for northeastern\nand northwestern Mississippi.\n\nFor your protection move to an interior room on the lowest floor of a\nbuilding.",
+        "response": "Shelter",
+        "parameters": {
+          "AWIPSidentifier": [
+            "SVSMEG"
+          ],
+          "WMOidentifier": [
+            "WWUS54 KMEG 140014 RRA"
+          ],
+          "NWSheadline": [
+            "A SEVERE THUNDERSTORM WARNING REMAINS IN EFFECT UNTIL 745 PM CDT FOR SOUTHEASTERN LAFAYETTE...NORTHWESTERN CHICKASAW...YALOBUSHA... CALHOUN AND SOUTHWESTERN PONTOTOC COUNTIES"
+          ],
+          "eventMotionDescription": [
+            "2022-04-14T00:14:00-00:00...storm...249DEG...43KT...34.24,-89.42 33.98,-89.49 33.83,-89.78"
+          ],
+          "windThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxWindGust": [
+            "60 MPH"
+          ],
+          "hailThreat": [
+            "RADAR INDICATED"
+          ],
+          "maxHailSize": [
+            "Up to .75"
+          ],
+          "BLOCKCHANNEL": [
+            "EAS",
+            "NWEM",
+            "CMAS"
+          ],
+          "EAS-ORG": [
+            "WXR"
+          ],
+          "VTEC": [
+            "/O.CON.KMEG.SV.W.0092.000000T0000Z-220414T0045Z/"
+          ],
+          "eventEndingTime": [
+            "2022-04-14T00:45:00+00:00"
+          ]
+        }
+      }
+    }
+  ]
+}
