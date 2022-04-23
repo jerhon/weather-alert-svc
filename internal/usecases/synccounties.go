@@ -4,6 +4,7 @@ import (
 	"weather-alerts-service/internal/domain"
 	"weather-alerts-service/internal/infrastructure/nwsshapefiles"
 	"weather-alerts-service/internal/infrastructure/persistence"
+	"weather-alerts-service/internal/logging"
 )
 
 type ImportCountyDeps struct {
@@ -39,15 +40,22 @@ func (deps *ImportCountyDeps) syncCounties(counties []domain.County) error {
 
 func (deps *ImportCountyDeps) SyncCounties() error {
 
+	logging.Info.Println("Synchronizing counties shapefile...")
+	logging.Debug.Println("Getting shapes...")
 	counties, err := deps.getShapefileCounties()
 	if err != nil {
 		return err
 	}
+	logging.Debug.Println("Found ", len(counties), " shapes.")
+	logging.Debug.Println("Synchronizing counties to the database.")
 
 	err = deps.syncCounties(counties)
 	if err != nil {
 		return err
 	}
+
+	logging.Debug.Println("Synchronized counties.")
+	logging.Info.Println("Done synchronizing counties.")
 
 	return nil
 }

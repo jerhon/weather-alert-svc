@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 	"weather-alerts-service/internal/infrastructure/nwsshapefiles"
 	"weather-alerts-service/internal/infrastructure/persistence"
+	"weather-alerts-service/internal/logging"
 	"weather-alerts-service/internal/usecases"
 )
 
@@ -25,6 +26,8 @@ func getShapeFile(relativePath string) (string, string, error) {
 }
 
 func main() {
+
+	logging.Init()
 
 	opts, _ := GetProgramOptions()
 
