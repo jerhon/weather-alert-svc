@@ -1,9 +1,11 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"os"
 	"path/filepath"
+	"weather-alerts-service/internal/domain"
 	"weather-alerts-service/internal/infrastructure/nwsshapefiles"
 	"weather-alerts-service/internal/infrastructure/persistence"
 	"weather-alerts-service/internal/logging"
@@ -29,19 +31,25 @@ func main() {
 
 	logging.Init()
 
-	opts, _ := GetProgramOptions()
+	countiesFile := flag.String("counties", "", "Zip file containing the county shapes.")
 
-	files := os.Args[1:]
-	if len(files) < 1 {
-		log.Fatal("Counties file missing.")
+	flag.Parse()
+
+	if *countiesFile == "" {
+		flag.Usage()
 		return
 	}
 
-	fullPath, shapeFile, err := getShapeFile(files[0])
+	opts, _ := GetProgramOptions()
 
-	shapeReader := nwsshapefiles.CountyReader{
+	fullPath, shapeFile, err := getShapeFile(*countiesFile)
+
+	countyShapeMapper := new(nwsshapefiles.CountyShapeAdapter)
+
+	shapeReader := nwsshapefiles.DomainShapeReader[domain.County]{
 		ZipFilePath:   fullPath,
 		ShapeFileName: shapeFile,
+		ShapeAdapter:  countyShapeMapper,
 	}
 
 	mongoClient, err := persistence.NewMongoClient(opts.MongoHost, opts.MongoUser, opts.MongoPassword)

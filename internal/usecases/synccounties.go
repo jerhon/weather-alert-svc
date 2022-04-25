@@ -8,13 +8,13 @@ import (
 )
 
 type ImportCountyDeps struct {
-	ShapefileReader *nwsshapefiles.CountyReader
+	ShapefileReader *nwsshapefiles.DomainShapeReader[domain.County]
 	Repository      *persistence.MongoCountiesRepository
 }
 
 func (deps *ImportCountyDeps) getShapefileCounties() ([]domain.County, error) {
 
-	counties, err := deps.ShapefileReader.GetAllCounties()
+	counties, err := deps.ShapefileReader.GetAll()
 	if err != nil {
 		return nil, err
 	}
