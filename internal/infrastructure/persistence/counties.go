@@ -19,8 +19,8 @@ type MongoCountiesRepository struct {
 	Client *mongo.Client
 }
 
-func (repo *MongoCountiesRepository) DeleteAll() error {
-	collection := repo.getCountiesCollection()
+func (dep *MongoCountiesRepository) DeleteAll() error {
+	collection := dep.getCountiesCollection()
 	_, err := collection.DeleteMany(context.TODO(), bson.D{})
 	if err != nil {
 		return err
@@ -30,8 +30,8 @@ func (repo *MongoCountiesRepository) DeleteAll() error {
 
 func (repo *MongoCountiesRepository) InsertMany(counties []domain.County) error {
 	collection := repo.getCountiesCollection()
-	mongoCounties := sliceutils.MapFunc(counties, func(alert domain.County) interface{} {
-		return alert
+	mongoCounties := sliceutils.MapFunc(counties, func(county domain.County) interface{} {
+		return county
 	})
 	_, err := collection.InsertMany(context.TODO(), mongoCounties)
 	if err != nil {

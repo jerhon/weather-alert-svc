@@ -12,10 +12,12 @@ Use this application at your own risk.
 
 There are a few applications to support this.
 
-| Name                 | Description                                                                  |
-|----------------------|------------------------------------------------------------------------------|
-| weather-alert-sync   | This will query the NWS API and add any new alerts to the mongodb database   |
-| weather-shape-import | This will import shapes from the NWS shape files into the current mongodb    |
+| Name                | Description                                                                  |
+|---------------------|------------------------------------------------------------------------------|
+| weather-alert-sync  | This will query the NWS API and add any new alerts to the mongodb database   |
+| weather-zone-import | This will import shapes from the NWS shape files into the current mongodb    |
+| weather-alert-svc      | TODO: This will be a microservice which returns data for imported alerts.     |
+| weather-alert-publisher | TODO: This will be an application which will publish new alerts over a queue. |
 
 Any new alerts imported to mongodb will also be sent via a message queue.
 This allows other applications to use the alerts as they see fit.
@@ -29,12 +31,21 @@ When the alert is stored in MongoDB, a query is first done to find the correspon
 When one is found, it's stored on the alert to facilitate easier geographic data.
 
 To import shapes, they need to be downloaded from the [NWS Shape Files](https://www.weather.gov/gis/AWIPSShapefiles)
-The weather-shape-import CLI program must be run.
+The weather-zone-import CLI program must be run.
 
 So far, only importing the counties is supported.
 
+## Running
+
+```
+go run .\cmd\weather-zone-import\weather-zone-import.go 
+```
 
 ## Rational
 
 I really wanted to just build a simple application in Go that I could use to further learn the language and expand my skills in k8s.
 This was something that I felt was non-trivial enough for me to further understand the language.
+A small project to advance my understanding of GO.
+
+## Known Issues
+* The Marine Zones have one very large zone that contains a lot of shapes, it currently can't be imported in a single MongoDB.

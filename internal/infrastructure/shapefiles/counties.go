@@ -1,32 +1,24 @@
-package nwsshapefiles
+package shapefiles
 
 import (
-	"bytes"
-	"github.com/jonas-p/go-shp"
+	"fmt"
 	"weather-alerts-service/internal/domain"
-	"weather-alerts-service/pkg/geojson"
 )
 
-type CountyShapeAdapter struct {
-}
-
-func (dep *CountyShapeAdapter) MapFromCurrentShape(shapeFile *shp.ZipReader, geometry *geojson.MultiPolygon) domain.County {
+func MapDomainShapeToCounty(shape domain.DomainShape) domain.County {
 
 	county := domain.County{}
-	county.Geometry = *geometry
-	fields := shapeFile.Fields()
-	for fieldIdx, field := range fields {
-		fieldName := string(bytes.Split(field.Name[:], []byte{0})[0])
-		value := shapeFile.Attribute(fieldIdx)
+	county.Geometry = shape.Geometry
+	for fieldName, value := range shape.Properties {
 		switch fieldName {
 		case "STATE":
-			county.State = value
+			county.State = fmt.Sprintf("%v", value)
 		case "FIPS":
-			county.CountyFips = value
+			county.CountyFips = fmt.Sprintf("%v", value)
 		case "COUNTYNAME":
-			county.CountyName = value
+			county.CountyName = fmt.Sprintf("%v", value)
 		case "TIME_ZONE":
-			county.TimeZone = value
+			county.TimeZone = fmt.Sprintf("%v", value)
 		}
 
 		// From this URL https://www.weather.gov/gis/Counties

@@ -1,24 +1,20 @@
-package nwsshapefiles
+package shapefiles
 
 import (
+	"bytes"
 	"fmt"
 	"github.com/jonas-p/go-shp"
+	"weather-alerts-service/internal/domain"
 	"weather-alerts-service/pkg/geojson"
 )
 
-type DomainShapeReader[T any] struct {
+type DomainShapeReader struct {
 	ZipFilePath   string
 	ShapeFileName string
-
-	ShapeAdapter DomainShapeMapper[T]
 }
 
-type DomainShapeMapper[T any] interface {
-	MapFromCurrentShape(shapeFile *shp.ZipReader, polygon *geojson.MultiPolygon) T
-}
-
-// GetAllCounties will read all counties from the shape file and return them as a slice of counties
-func (dep *DomainShapeReader[T]) GetAll() ([]T, error) {
+// GetAllShapes will read all shapes from a shape file.  It is assuming the shapes are multipolygons
+func (dep DomainShapeReader) GetAllShapes() ([]domain.DomainShape, error) {
 
 	shapeFile, err := shp.OpenShapeFromZip(dep.ZipFilePath, dep.ShapeFileName)
 	if err != nil {
@@ -27,7 +23,7 @@ func (dep *DomainShapeReader[T]) GetAll() ([]T, error) {
 	//goland:noinspection GoUnhandledErrorResult
 	defer shapeFile.Close()
 
-	ret := make([]T, 0)
+	ret := make([]domain.DomainShape, 0)
 
 	for shapeFile.Next() {
 		_, shape := shapeFile.Shape()
@@ -38,12 +34,28 @@ func (dep *DomainShapeReader[T]) GetAll() ([]T, error) {
 
 		// Get the geojson polygon
 		geoJsonPolygon := toGeoJsonMultipolygon(polygon)
-		domainType := dep.ShapeAdapter.MapFromCurrentShape(shapeFile, &geoJsonPolygon)
+		props := getShapeProperties(shapeFile)
 
-		ret = append(ret, domainType)
+		domainShape := domain.DomainShape{
+			Geometry:   geoJsonPolygon,
+			Properties: props,
+		}
+
+		ret = append(ret, domainShape)
 	}
 
 	return ret, nil
+}
+
+func getShapeProperties(shapeFile *shp.ZipReader) map[string]any {
+	props := make(map[string]any)
+	fields := shapeFile.Fields()
+	for fieldIdx, field := range fields {
+		fieldName := string(bytes.Split(field.Name[:], []byte{0})[0])
+		value := shapeFile.Attribute(fieldIdx)
+		props[fieldName] = value
+	}
+	return props
 }
 
 func toGeoJsonMultipolygon(polygon *shp.Polygon) geojson.MultiPolygon {

@@ -17,3 +17,8 @@ func NewMongoClient(host string, user string, password string) (*mongo.Client, e
 	client, err := mongo.Connect(context.TODO(), clientOptions)
 	return client, err
 }
+
+type SyncDomainTypeRepository[T any] interface {
+	DeleteAll() error
+	InsertMany(domainEntries []T) error
+}
