@@ -48,4 +48,5 @@ This was something that I felt was non-trivial enough for me to further understa
 A small project to advance my understanding of GO.
 
 ## Known Issues
+* Alert import not complete, need to add logic in to only update on change and only import new alerts since previous request.
 * The Marine Zones have one very large zone that contains a lot of shapes, it currently can't be imported in a single MongoDB.
