@@ -44,12 +44,15 @@ func (deps SyncAlertDependencies) SyncAlerts() (int, error) {
 			return 0, err
 		}
 
-		deps.ImportLogRepository.Insert(domain.ImportLog{
+		err = deps.ImportLogRepository.Insert(domain.ImportLog{
 			Type:           "active-alerts",
 			LastModified:   lastModified,
 			ImportedTime:   time.Now().UTC(),
 			ImportedAlerts: len(newAlerts),
 		})
+		if err != nil {
+			return 0, err
+		}
 
 		return len(newAlerts), err
 	}

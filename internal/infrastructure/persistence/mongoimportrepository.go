@@ -36,7 +36,7 @@ func (repo MongoImportLogRepository) Insert(importProcess domain.ImportLog) erro
 func (repo MongoImportLogRepository) GetLastImport(importType string) (*domain.ImportLog, error) {
 	collection := repo.getCollection()
 
-	result := collection.FindOne(context.TODO(), bson.D{{}}, &options.FindOneOptions{
+	result := collection.FindOne(context.TODO(), bson.D{{"type", importType}}, &options.FindOneOptions{
 		Sort: bson.D{{"importedtime", -1}},
 	})
 
