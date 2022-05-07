@@ -23,7 +23,7 @@ func NewNwsClient(applicationString string) *NwsClient {
 	return client
 }
 
-func (client *NwsClient) GetActiveAlerts(ifModifiedSince *string) (*AlertResult, error) {
+func (client *NwsClient) GetActiveAlerts(ifModifiedSince string) (*AlertResult, error) {
 	requestData := []byte("")
 	requestBuffer := bytes.NewBuffer(requestData)
 	request, err := http.NewRequest("GET", client.BaseUrl+"/alerts/active", requestBuffer)
@@ -31,8 +31,8 @@ func (client *NwsClient) GetActiveAlerts(ifModifiedSince *string) (*AlertResult,
 		return nil, err
 	}
 	request.Header.Add("User-Agent", "Go/1.18 ("+client.ApplicationString+")")
-	if ifModifiedSince != nil {
-		request.Header.Add("If-Modified-Since", *ifModifiedSince)
+	if ifModifiedSince != "" {
+		request.Header.Add("If-Modified-Since", ifModifiedSince)
 	}
 	httpClient := &http.Client{}
 	response, _ := httpClient.Do(request)
@@ -40,11 +40,18 @@ func (client *NwsClient) GetActiveAlerts(ifModifiedSince *string) (*AlertResult,
 	if err != nil {
 		return nil, err
 	}
-	lastModifier := response.Header.Get("Last-Modifier")
+	lastModifier := response.Header.Get("Last-Modified")
 	featureCollection := new(geojson.FeatureCollection[AlertProperties])
-	err = json.Unmarshal(body, featureCollection)
-	if err != nil {
-		return nil, err
+	if len(body) != 0 {
+		err = json.Unmarshal(body, featureCollection)
+		if err != nil {
+			return nil, err
+		}
+	} else {
+		return &AlertResult{
+			Alerts:       featureCollection,
+			LastModified: lastModifier,
+		}, nil
 	}
 	result := &AlertResult{LastModified: lastModifier, Alerts: featureCollection}
 	return result, nil

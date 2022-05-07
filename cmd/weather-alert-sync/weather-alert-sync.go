@@ -6,10 +6,14 @@ import (
 	"os"
 	"weather-alerts-service/internal/infrastructure/persistence"
 	"weather-alerts-service/internal/infrastructure/weatherservice"
+	"weather-alerts-service/internal/logging"
 	"weather-alerts-service/internal/usecases"
 )
 
 func main() {
+
+	logging.Init()
+
 	opts, err := GetProgramOptions()
 	if err != nil {
 		log.Fatal("Unable to obtain options for program execution", err)
@@ -21,8 +25,9 @@ func main() {
 	}
 
 	syncAlerts := usecases.SyncAlertDependencies{
-		AlertSource:     weatherservice.NewAlertsAdapter("test-application"),
-		AlertRepository: persistence.NewAlertMongoRepository(mongoClient),
+		AlertSource:         weatherservice.NewAlertsAdapter("test-application"),
+		AlertRepository:     persistence.NewAlertMongoRepository(mongoClient),
+		ImportLogRepository: persistence.NewMongoImportLogRepository(mongoClient),
 	}
 
 	alertsCount, err := syncAlerts.SyncAlerts()

@@ -1,50 +1,66 @@
 package usecases
 
 import (
+	"time"
 	"weather-alerts-service/internal/domain"
 	"weather-alerts-service/internal/infrastructure/persistence"
 	"weather-alerts-service/internal/infrastructure/weatherservice"
+	"weather-alerts-service/internal/logging"
 	"weather-alerts-service/pkg/sliceutils"
 )
 
 type SyncAlertDependencies struct {
-	AlertSource      weatherservice.AlertSource
-	AlertRepository  persistence.AlertRepository
-	CountyRepository persistence.CountiesRepository
+	AlertSource         weatherservice.AlertSource
+	AlertRepository     persistence.AlertRepository
+	ImportLogRepository persistence.ImportLogRepository
 }
 
 func (deps SyncAlertDependencies) SyncAlerts() (int, error) {
-	alerts, err := deps.AlertSource.GetActiveAlerts()
+
+	lastImport, err := deps.ImportLogRepository.GetLastImport("active-alerts")
+	if err != nil {
+		logging.Error.Println("Cannot retrieve last import record", err)
+	}
+
+	ifModifiedSince := ""
+	if lastImport != nil {
+		ifModifiedSince = lastImport.LastModified
+	}
+
+	alerts, lastModified, err := deps.AlertSource.GetActiveAlerts(ifModifiedSince)
 	if err != nil {
 		return 0, err
 	}
 
-	newAlerts, err := deps.getNewAlerts(alerts)
-	if err != nil {
-		return 0, err
-	}
+	if len(alerts) > 0 {
 
-	err = deps.AlertRepository.InsertAlerts(newAlerts)
-	if err != nil {
-		return 0, err
-	}
-
-	return len(newAlerts), err
-}
-
-func (deps SyncAlertDependencies) populateAlertGeometry(alerts []domain.Alert) {
-	for _, alert := range alerts {
-		if alert.Geometry != nil {
-
+		newAlerts, err := deps.getNewAlerts(alerts)
+		if err != nil {
+			return 0, err
 		}
+
+		err = deps.AlertRepository.InsertAlerts(newAlerts)
+		if err != nil {
+			return 0, err
+		}
+
+		deps.ImportLogRepository.Insert(domain.ImportLog{
+			Type:           "active-alerts",
+			LastModified:   lastModified,
+			ImportedTime:   time.Now().UTC(),
+			ImportedAlerts: len(newAlerts),
+		})
+
+		return len(newAlerts), err
 	}
+	return 0, nil
 }
 
 func (deps SyncAlertDependencies) getNewAlerts(alerts []domain.Alert) ([]domain.Alert, error) {
 
-	// Find any existing alerts
 	ret := make([]domain.Alert, 0)
 	oldAlerts, err := deps.AlertRepository.FindExistingAlerts(alerts)
+
 	if err != nil {
 		return nil, err
 	}

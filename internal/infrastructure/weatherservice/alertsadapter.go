@@ -9,29 +9,26 @@ import (
 )
 
 type AlertSource interface {
-	GetActiveAlerts() ([]domain.Alert, error)
+	GetActiveAlerts(lastModified string) ([]domain.Alert, string, error)
 }
 
 type AlertSourceAdapter struct {
-	Client       *nwsclient.NwsClient
-	LastModified *string
+	Client *nwsclient.NwsClient
 }
 
 func NewAlertsAdapter(applicationString string) *AlertSourceAdapter {
 	return &AlertSourceAdapter{
-		Client:       nwsclient.NewNwsClient(applicationString),
-		LastModified: nil,
+		Client: nwsclient.NewNwsClient(applicationString),
 	}
 }
 
-func (adapter *AlertSourceAdapter) GetActiveAlerts() ([]domain.Alert, error) {
-	nwsAlerts, err := adapter.Client.GetActiveAlerts(adapter.LastModified)
+func (adapter *AlertSourceAdapter) GetActiveAlerts(lastModified string) ([]domain.Alert, string, error) {
+	nwsAlerts, err := adapter.Client.GetActiveAlerts(lastModified)
 	if err != nil {
-		return nil, err
+		return nil, "", err
 	}
-	adapter.LastModified = &nwsAlerts.LastModified
 	domainAlerts := mapFeatureCollectionToAlerts(nwsAlerts.Alerts)
-	return domainAlerts, nil
+	return domainAlerts, nwsAlerts.LastModified, nil
 }
 
 // MapToDomain takes an alert from the geojson and maps into it's form to be stored as a domain type
